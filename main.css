@@ -1,15 +1,32 @@
 .black {
-  width: 100px;
-  height: 100px;
   background-color: rgb(0, 0, 0);
 }
 
 .white {
+  background-color: rgb(141, 0, 94);
+}
+
+.black,
+.white {
   width: 100px;
   height: 100px;
-  background-color: rgb(84, 0, 92);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .horisontalt {
   display: flex;
+}
+
+.red {
+  color: rgb(0, 217, 255);
+}
+
+.notWhite {
+  color: rgb(255, 255, 255);
+}
+
+.piece {
+  font-size: 100px;
 }
