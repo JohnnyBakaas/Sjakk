@@ -10,10 +10,13 @@ let generertID = 0;
 
 let bricks = ["♟", "♜", "♞", "♝", "♛", "♚", "♝", "♞", "♜"];
 
+let generatedEventLisener = [];
+
 const start = () => {
   makeChessBoard();
   document.getElementById("yes").innerHTML = `${chessBoard}`;
   spawnPieces();
+  generateEventLiseners();
 };
 
 const makeChessBoard = () => {
@@ -65,4 +68,70 @@ const spawnPieces = () => {
     spawnPiece(curentPosition - 8, bricks[0], "notWhite");
     curentPosition--;
   }
+};
+
+const generateEventLisener = (id, myFunction) => {
+  document.getElementById(id).addEventListener("click", myFunction);
+};
+
+const generateEventLiseners = () => {
+  for (let i = 0; i < 8 * 8; i++) {
+    generateEventLisener(i, () => legalMoves(i));
+  }
+};
+
+const getContent = (id) => {
+  //content = [Type brick position arr, farge, posisjon]
+  let content = ["", "", id];
+  const contentOfHTML = document.getElementById(id).innerHTML;
+  for (let i = 0; i < bricks.length; i++) {
+    if (contentOfHTML.includes(bricks[i])) {
+      content[0] = bricks[i];
+      break;
+    }
+  }
+
+  if (contentOfHTML.includes("red") || contentOfHTML.includes("notWhite")) {
+    if (contentOfHTML.includes("red")) {
+      content[1] = "red";
+    } else {
+      content[1] = "notWhite";
+    }
+  }
+
+  return content;
+};
+
+//gives the legal moves for a pawn
+const legalMovesPawns = (isNotWhite, id) => {
+  let legalMovesArr = [];
+  if (isNotWhite) {
+    if (id > 7 && id < 16) {
+      console.log("HMMM");
+      legalMovesArr.push(id + 8);
+      legalMovesArr.push(id + 16);
+    } else {
+      legalMovesArr.push(id + 8);
+    }
+  }
+  console.log(legalMovesArr);
+  return legalMovesArr;
+};
+
+//gives you the function you need to modify game bord
+const selectFunction = (isNotWhite, id) => {
+  const reeeee = [legalMovesPawns(isNotWhite, id)];
+};
+
+//
+const legalMoves = (id) => {
+  const arr = getContent(id);
+  for (let i = 0; i < bricks.length; i++) {
+    if (arr[0] == bricks[i]) {
+      arr[0] = i;
+      break;
+    }
+  }
+  console.log(arr);
+  selectFunction(arr[1], arr[2]);
 };
