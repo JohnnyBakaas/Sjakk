@@ -1,0 +1,42 @@
+body {
+  background-color: rgb(4, 65, 4);
+  display: flex;
+  justify-content: center;
+}
+
+.horisontalt {
+  display: flex;
+}
+
+.vertikalt {
+  border: 10px solid black;
+}
+
+.light,
+.dark {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+}
+
+.light {
+  background-color: rgb(223, 177, 92);
+}
+
+.dark {
+  background-color: rgb(121, 97, 53);
+}
+
+.black,
+.white {
+  font-size: 70px;
+}
+
+.black {
+  color: black;
+}
+
+.white {
+  color: white;
+}

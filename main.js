@@ -118,12 +118,20 @@ const legalMovesPawns = (isNotWhite, id) => {
   return legalMovesArr;
 };
 
+const legalMovesRook = (id) => {
+  //move verticaly
+  for (let i = id; i < 63; i++) {
+    console.log("jeg gir opp");
+  }
+};
+
 //gives you the function you need to modify game bord
 const selectFunction = (isNotWhite, id) => {
   const reeeee = [legalMovesPawns(isNotWhite, id)];
+  return reeeee;
 };
 
-//
+//uses the selected function on the "brick" you have selected
 const legalMoves = (id) => {
   const arr = getContent(id);
   for (let i = 0; i < bricks.length; i++) {
@@ -134,4 +142,5 @@ const legalMoves = (id) => {
   }
   console.log(arr);
   selectFunction(arr[1], arr[2]);
+  console.log(selectFunction(arr[1], arr[2]));
 };
