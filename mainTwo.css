@@ -1,5 +1,19 @@
+* {
+  user-select: none;
+}
+
 body {
   background-color: rgb(27, 27, 27);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+h1 {
+  color: green;
+}
+
+.hele-brettet {
   display: flex;
   justify-content: center;
 }

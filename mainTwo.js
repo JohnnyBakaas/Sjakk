@@ -55,6 +55,7 @@ const makeChessBoardArr = (arr) => {
   for (let i = 0; i < arr.length; i++) {
     for (let j = 0; j < arr.length; j++) {
       //makes a array with te information of the place, could have used object, but im to lazy to learn about that just yett
+      //update: i have now leard about objects, im still to lazy to re writ this just yet, snake is cool
       //                type, team, avatar, brettfargen
       arr[i][j] = [null, null, null, lightOrDark];
       changeLightOrDark();
@@ -106,14 +107,18 @@ const makeTheHTML = () => {
   for (let i = 0; i < boardArr.length; i++) {
     content = content + '<div class="horisontalt">';
     for (let j = 0; j < 8; j++) {
-      content = content + '<div class="' + boardArr[i][j][BRETTFARGE] + '">';
+      content =
+        content +
+        `<div onclick="handlePiece(${i}, ${j})" class="` +
+        boardArr[i][j][BRETTFARGE] +
+        '"' +
+        ">";
       if (boardArr[i][j][TYPE] !== null) {
         content =
           content +
           '<span class="' +
           boardArr[i][j][TEAM_COLOR] +
           '" ' +
-          addId(i, j) +
           ">" +
           boardArr[i][j][AVATAR] +
           "</span>";
@@ -123,10 +128,6 @@ const makeTheHTML = () => {
     content = content + "</div>";
   }
   return content;
-};
-
-const addId = (i, j) => {
-  return "id(" + boardArrId[i][j] + ")";
 };
 
 const handlePiece = (i, j) => {
@@ -174,21 +175,23 @@ const handlePiecePawnBlack = (i, j) => {
   }
 };
 
-const moveThePiece = (positionX, positionY) => {
-  if (boardArr[positionX][positionY][BRETTFARGE].includes("potential-moves")) {
+const moveThePiece = (positionY, positionX) => {
+  if (boardArr[positionY][positionX][BRETTFARGE].includes("potential-moves")) {
     console.log("Det funker!");
   }
 };
-
-makeIdArray();
-makeChessBoardArr(boardArr);
-makeChessBoardArr(virginBoardArr);
-spawnPiecesInArr();
 
 const renderHTML = () => {
   makeTheHTML();
   document.getElementById("chess-bord").innerHTML = makeTheHTML();
 };
 
+makeIdArray();
+makeChessBoardArr(boardArr);
+makeChessBoardArr(virginBoardArr);
+spawnPiecesInArr();
 renderHTML();
+
 console.log(virginBoardArr);
+
+let test = document.getElementById("0");
